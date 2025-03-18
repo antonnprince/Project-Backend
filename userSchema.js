@@ -22,6 +22,20 @@ const userSchema = new mongoose.Schema({
         required:true
     },
 
+    email:{
+        type:String,
+        requried:true
+    },
+
+    password:{
+        type:String,
+        required:true
+    },
+
+    specialization:{
+        type:String,
+    },
+
     name:{
         type:String,
         required:true

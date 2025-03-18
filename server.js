@@ -17,13 +17,33 @@ mongoose.connect(mongoURL).then(()=>{
         console.log(error)
     })
 
-
-app.post('/test', async(req, res)=>{
+app.get('/login', async(req,res)=>{
     try {
-        const result = await Users.create({role:"someghn",name:"test",id:3445})
+        const {email,password} = req.body
+        const result = await Users.findOne({email:email, password:password})
         res.status(200).json(result)
     } catch (error) {
-        
+        res.status(400).json({message:"User not found"})
+    }
+ 
+})
+
+app.post('/create_user', async(req, res)=>{
+    try {
+        const user = req.body
+        await Users.create(user)
+        res.status(200).json({message:"Successfully created"})
+    } catch (error) {
         res.status(400).json(error)
+    }
+})
+
+app.get('/search', async(req, res)=>{
+    try {
+        const {special} = req.body
+        const result = await Users.find({specialization:special})
+        return res.status(200).json(result)
+    } catch (error) {
+        res.status(400).json({message:"None exists"})
     }
 })
