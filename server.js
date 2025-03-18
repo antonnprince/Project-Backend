@@ -16,7 +16,7 @@ mongoose.connect(mongoURL).then(()=>{
     }).catch((error)=>{
         console.log(error)
     })
-
+#login with email and password
 app.get('/login', async(req,res)=>{
     try {
         const {email,password} = req.body
@@ -28,6 +28,7 @@ app.get('/login', async(req,res)=>{
  
 })
 
+#user register
 app.post('/create_user', async(req, res)=>{
     try {
         const user = req.body
@@ -38,6 +39,7 @@ app.post('/create_user', async(req, res)=>{
     }
 })
 
+#searching legal professionals for users
 app.get('/search', async(req, res)=>{
     try {
         const {special} = req.body
@@ -48,6 +50,7 @@ app.get('/search', async(req, res)=>{
     }
 })
 
+#to get information about user
 app.get('/get_user', async(req,res)=>{
     try {
          const {email} = req.body
@@ -58,6 +61,7 @@ app.get('/get_user', async(req,res)=>{
     }
 })
 
+#dont use this now
 app.put('/update_history', async (req, res) => {
     const { email, index, newContent } = req.body;
 
