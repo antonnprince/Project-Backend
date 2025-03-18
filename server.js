@@ -10,7 +10,7 @@ const mongoURL = process.env.mongo_url
 
 mongoose.connect(mongoURL).then(()=>{
     console.log("Database connected")
-    app.listen(3000, ()=>{
+    app.listen(4000, ()=>{
         console.log(`App is listening at 3000`)
     })
     }).catch((error)=>{
