@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema({
     },
 
     history:{
-        type:[{historySchema}]
+        type:[historySchema]
     }
 })
 
