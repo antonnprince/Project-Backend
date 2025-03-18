@@ -47,3 +47,11 @@ app.get('/search', async(req, res)=>{
         res.status(400).json({message:"None exists"})
     }
 })
+
+app.get('/chat_history', async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        return res.status(400).json({message:"Error occured try again"})
+    }
+})

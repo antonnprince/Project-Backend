@@ -1,13 +1,8 @@
 import mongoose from "mongoose"
 
 const historySchema = new mongoose.Schema({
-    role:{
-        type:String,
-        requried:true
-    },
-    value:{
-        type:String,
-        required:true
+    content:{
+        type:[Object]
     },
 
     index:{
@@ -46,7 +41,7 @@ const userSchema = new mongoose.Schema({
     },
 
     history:{
-        type:[historySchema],
+        type:[{historySchema}]
     }
 })
 
