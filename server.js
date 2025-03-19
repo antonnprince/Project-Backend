@@ -22,11 +22,11 @@ app.get('/login', async(req,res)=>{
         const {email,password} = req.body
         const result = await Users.findOne({email:email, password:password})
         if(!result)
-            res.status(404).json({message:"user does not exist"})
+            return res.status(404).json({message:"user does not exist"})
         else
-            res.status(200).json(result)
+            return res.status(200).json(result)
     } catch (error) {
-        res.status(400).json({message:"User not found"})
+        return res.status(400).json({message:"User not found"})
     }
  
 })
@@ -36,9 +36,9 @@ app.post('/create_user', async(req, res)=>{
     try {
         const user = req.body
         await Users.create(user)
-        res.status(200).json({message:"Successfully created"})
+        return res.status(200).json({message:"Successfully created"})
     } catch (error) {
-        res.status(400).json(error)
+        return res.status(400).json(error)
     }
 })
 
@@ -49,7 +49,7 @@ app.get('/search', async(req, res)=>{
         const result = await Users.find({specialization:special})
         return res.status(200).json(result)
     } catch (error) {
-        res.status(400).json({message:"None exists"})
+        return res.status(400).json({message:"None exists"})
     }
 })
 
@@ -58,7 +58,7 @@ app.get('/get_user', async(req,res)=>{
     try {
          const {email} = req.body
          const result = await Users.findOne({email:email})
-         res.status(200).json(result)
+         return res.status(200).json(result)
     } catch (error) {
         return res.status(400).json({message:"Error occured try again"})
     }
@@ -92,10 +92,10 @@ app.put('/update_history', async (req, res) => {
             return res.status(200).json({ message: "History added successfully", user });
         }
 
-        res.status(200).json({ message: "Content updated successfully", updatedUser });
+        return res.status(200).json({ message: "Content updated successfully", updatedUser });
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Server error", error });
+        return res.status(500).json({ message: "Server error", error });
     }
 });
