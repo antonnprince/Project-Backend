@@ -21,7 +21,10 @@ app.get('/login', async(req,res)=>{
     try {
         const {email,password} = req.body
         const result = await Users.findOne({email:email, password:password})
-        res.status(200).json(result)
+        if(!result)
+            res.status(404).json({message:"user does not exist"})
+        else
+            res.status(200).json(result)
     } catch (error) {
         res.status(400).json({message:"User not found"})
     }
